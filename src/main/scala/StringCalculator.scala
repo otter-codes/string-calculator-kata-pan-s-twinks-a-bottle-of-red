@@ -1,18 +1,21 @@
+import scala.util.matching.Regex
+
 object StringCalculator extends App {
 
   def add(numbers: String): Int = {
 
-    //(numbers(0).toString.toInt)+(numbers(3).toString.toInt)
+    val regexPattern = new Regex("\\d+")
 
+    val numbersMatched = regexPattern.findAllIn(numbers).toList
 
+    val listAsInt = numbersMatched.map(p => p.toInt)
 
-    numbers match {
+    //println(listAsInt.sum)
 
-      case "" => 0
-      case "1" => 1
-      case "1, 2" => 3
-
-    }
+    listAsInt.sum
 
   }
+
+  add("1, 2, 3, 4, 5, 10, 69")
+
 }
