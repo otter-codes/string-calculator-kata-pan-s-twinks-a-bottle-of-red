@@ -6,7 +6,7 @@ object StringCalculator {
     }
     else {
       val x = "\\-\\d+".r.findAllIn(numbers).toList
-      throw new IllegalArgumentException(s"requirement failed: -2, -3")
+      throw new IllegalArgumentException(s"requirement failed: ${x.mkString(", ")}")
     }
   }
 }
