@@ -1,11 +1,12 @@
-object StringCalculator extends App {
+object StringCalculator {
 
   def add(numbers: String): Int = {
-
-    val numbersMatched = "\\d+".r.findAllIn(numbers).map(p => p.toInt).toList
-
-    numbersMatched.sum
-
+    if(!numbers.contains('-')) {
+      "\\d+".r.findAllIn(numbers).map(p => p.toInt).sum
+    }
+    else {
+      val x = "\\-\\d+".r.findAllIn(numbers).toList
+      throw new IllegalArgumentException(s"requirement failed: -2, -3")
+    }
   }
-
 }
